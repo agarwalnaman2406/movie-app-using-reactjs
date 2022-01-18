@@ -8,7 +8,8 @@ export default class Movies extends Component {
             hover:'',
             parr:[1],
             currPage: 1,
-            movies:[]
+            movies:[],
+            favourites:[]
         }
     }
     async componentDidMount(){
@@ -27,7 +28,7 @@ export default class Movies extends Component {
         })
     }
     handleRight = ()=>{
-        console.log("Handle Right Entered")
+        // console.log("Handle Right Entered")
         let tarr = [];
         for(let i=1;i<=this.state.parr.length+1;i++){
             tarr.push(i);
@@ -50,9 +51,30 @@ export default class Movies extends Component {
             this.setState({
                 currPage: value
             },this.changeMovies)
-        }
-        
+        }   
     }
+
+    handleFavourites=(movie)=>{
+        let oldData = JSON.parse(localStorage.getItem('movies') || "[]");
+        if(this.state.favourites.includes(movie.id)){
+            oldData = oldData.filter((m)=>m.id!=movie.id)
+        }else{
+            oldData.push(movie)
+        }
+        localStorage.setItem("movies",JSON.stringify(oldData));
+        console.log("Hello");
+        console.log(oldData);
+        this.handleFavouritesState();
+    }
+
+    handleFavouritesState=()=>{
+        let oldData = JSON.parse(localStorage.getItem('movies') || "[]");
+        let temp = oldData.map((movie)=>movie.id);
+        this.setState({
+            favourites:[...temp]
+        })
+    }
+
     render() {
         return (
             <>
@@ -74,7 +96,7 @@ export default class Movies extends Component {
                                     <div className="button-wrapper" style={{display:'flex',width:'100%',justifyContent:'center'}}>
                                         {
                                             this.state.hover === movieobj.id &&
-                                             <a className="btn btn-primary movies-button">Add To Favourites</a>
+                                             <a className="btn btn-primary movies-button" onClick={()=>this.handleFavourites(movieobj)}>{this.state.favourites.includes(movieobj.id)?"Remove from Favourites":"Add To Favourites"}</a>
                                         }
                                         
                                     </div>
