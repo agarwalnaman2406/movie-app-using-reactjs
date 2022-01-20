@@ -38,12 +38,12 @@
 }
 
 .banner-card{
-  width: 100vw;
-  margin-top: 1vh;
-  margin-bottom: 3vh;
-  position: relative;
-  height: 70vh;
-  color: white;
+    width: 100vw;
+    margin-top: 1vh;
+    margin-bottom: 3vh;
+    position: relative;
+    height: 70vh;
+    color: white;
 }
 
 .banner-img{
@@ -68,13 +68,13 @@
 
 .movies-list{
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   padding: 1rem;
   justify-content: center;
 }
 
 .movies-card{
-  width:20vw;
+  width: 20vw;
   margin: 1rem;
   color: white;
   position: relative;
@@ -84,28 +84,38 @@
   position: absolute;
   top: 1rem;
   left: 1rem;
+
 }
 
 .movies-button{
   position: absolute;
   bottom: 2rem;
 }
-
+/* style={{height:'40vh',width:'20vw'}} */
 .movies-img{
-  height:40vh;
+  height: 40vh;
   width: 20vw;
 }
 
-@media screen and (max-width:400px) {
+.favourites-genres{
+  padding: 3rem;
+}
+
+.favourites-table{
+  padding: 3rem;
+  overflow: auto;
+}
+
+@media screen and (max-width:400px){
   .banner-card{
-    height: 30vh;
+    height:30vh;
   }
   .banner-img{
     height: 30vh;
   }
   .banner-title{
     top: 12vh;
-    left: 5vw;
+    left: 5vw
   }
   .banner-text{
     top: 17vh;
@@ -121,12 +131,4 @@
   .movies-img{
     width: 40vw;
   }
-}
-
-.favourites-genres{
-  padding: 3rem;
-}
-
-.favourites-table{
-  padding: 3rem;
 }
